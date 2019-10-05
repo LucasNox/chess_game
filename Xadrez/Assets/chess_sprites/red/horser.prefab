@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1927785319389540505}
   - component: {fileID: 902613422967465284}
+  - component: {fileID: 5134211759851076430}
+  - component: {fileID: 6379305204321772502}
   m_Layer: 0
   m_Name: horser
   m_TagString: Untagged
@@ -79,3 +81,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5134211759851076430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972420422914007220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebc22aa9dd210849b76aae8f348a89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece_color: 0
+  move:
+  - {fileID: 6379305204321772502}
+--- !u!114 &6379305204321772502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972420422914007220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173ea688a2e47784b984803ccb7959ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

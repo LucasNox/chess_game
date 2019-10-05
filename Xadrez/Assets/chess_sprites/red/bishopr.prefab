@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1130102840129953684}
   - component: {fileID: 6655054173949788929}
+  - component: {fileID: 8882898745722447630}
+  - component: {fileID: 2104729217901239661}
   m_Layer: 0
   m_Name: bishopr
   m_TagString: Untagged
@@ -79,3 +81,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8882898745722447630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488241214449697306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebc22aa9dd210849b76aae8f348a89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece_color: 0
+  move:
+  - {fileID: 2104729217901239661}
+--- !u!114 &2104729217901239661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488241214449697306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887008451110c834fb0d2e3b0cfccdad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

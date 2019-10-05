@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 261713192468915966}
   - component: {fileID: 7447253823920681717}
+  - component: {fileID: 7041983825083044497}
+  - component: {fileID: 5741491227799117623}
   m_Layer: 0
   m_Name: kingr
   m_TagString: Untagged
@@ -79,3 +81,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7041983825083044497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324396162615584046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebc22aa9dd210849b76aae8f348a89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece_color: 0
+  move:
+  - {fileID: 5741491227799117623}
+--- !u!114 &5741491227799117623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324396162615584046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcabde8607c2ca40a6699ae1b337c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

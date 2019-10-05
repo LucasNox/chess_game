@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7816974114687871368}
   - component: {fileID: 5926940792142856962}
+  - component: {fileID: 7663191053285692107}
+  - component: {fileID: 2771216233571701013}
   m_Layer: 0
   m_Name: towerr
   m_TagString: Untagged
@@ -79,3 +81,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7663191053285692107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738213746802270269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebc22aa9dd210849b76aae8f348a89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece_color: 0
+  move:
+  - {fileID: 2771216233571701013}
+--- !u!114 &2771216233571701013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738213746802270269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3089fa17dbdd4da419154f094f4045e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

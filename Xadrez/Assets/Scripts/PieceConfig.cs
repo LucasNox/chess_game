@@ -7,6 +7,7 @@ public class PieceConfig : MonoBehaviour
     public enum Color { blue, red };
 
     public Color piece_color;
+    [SerializeField] PieceMove[] move;
 
     // Start is called before the first frame update
     void Start()
