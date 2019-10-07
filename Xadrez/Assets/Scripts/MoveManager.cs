@@ -144,6 +144,7 @@ public class MoveManager : MonoBehaviour
         {
             selected_piece = board[oponent_move.xpos1, oponent_move.ypos1];
             swapPiecePositionInt(new Vector3Int(oponent_move.xpos1, oponent_move.ypos1, 0), new Vector3Int(oponent_move.xpos2, oponent_move.ypos2, 0));
+            checkVictory();
             selected_piece.transform.position = move_grid.GetCellCenterWorld(new Vector3Int(oponent_move.xpos2, oponent_move.ypos2, 0));
             selected_piece = null;
             oponent_move = null;
@@ -186,6 +187,7 @@ public class MoveManager : MonoBehaviour
                     {
                         player.GetComponent<PlayerData>().sendBytes(ObjectToByteArray(new Movement(move_grid.WorldToCell(selected_piece.transform.position), cell_clicked)));
                         swapPiecePosition(selected_piece.transform.position, mousePos);
+                        checkVictory();
                         selected_piece.transform.position = move_grid.GetCellCenterWorld(cell_clicked);
                         if (selected_piece.GetComponent<PawnMove>() != null)
                             selected_piece.GetComponent<PawnMove>().useFirstMove();
