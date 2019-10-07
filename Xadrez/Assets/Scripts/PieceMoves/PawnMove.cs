@@ -43,6 +43,11 @@ public class PawnMove : PieceMove
         return EliminateWrongPos(pos_list, color, board_state);
     }
 
+    public void useFirstMove()
+    {
+        first_move = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

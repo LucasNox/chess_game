@@ -165,6 +165,11 @@ MonoBehaviour:
     type: 3}
   Blue_Pawn: {fileID: 4967509447151521582, guid: 6c6d0b57b9dfc324dbc846b2d2d03745,
     type: 3}
+  KillCell: {fileID: 4892635405114538787, guid: a4ca86d45ac16a2448af66eca68ab1f7,
+    type: 3}
+  MoveCell: {fileID: 915676112565304738, guid: 33a4deae262ac424893685642a9c3b7a, type: 3}
+  SelectedCell: {fileID: 1893678862896991290, guid: 53f9641e106c8c44887ea189956641d8,
+    type: 3}
 --- !u!4 &7763559
 Transform:
   m_ObjectHideFlags: 0

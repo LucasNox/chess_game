@@ -8,7 +8,7 @@ public class TowerMove : PieceMove
     {
         LinkedList<Vector3Int> pos_list = new LinkedList<Vector3Int>();
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
@@ -21,7 +21,7 @@ public class TowerMove : PieceMove
             }
             catch (System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
@@ -34,7 +34,7 @@ public class TowerMove : PieceMove
             }
             catch (System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
@@ -47,7 +47,7 @@ public class TowerMove : PieceMove
             }
             catch (System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {

@@ -8,7 +8,7 @@ public class BishopMove : PieceMove
     {
         LinkedList<Vector3Int> pos_list = new LinkedList<Vector3Int>();
 
-        for(int i = 0; i < 7; i++)
+        for(int i = 1; i < 8; i++)
         {
             try {
                 if(board_state[pos.x + i, pos.y + i] != null)
@@ -19,7 +19,7 @@ public class BishopMove : PieceMove
                 pos_list.AddLast(new Vector3Int(pos.x + i, pos.y + i, 0));
             } catch(System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
@@ -32,7 +32,7 @@ public class BishopMove : PieceMove
             }
             catch (System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
@@ -45,7 +45,7 @@ public class BishopMove : PieceMove
             }
             catch (System.Exception) { }
         }
-        for (int i = 0; i < 7; i++)
+        for (int i = 1; i < 8; i++)
         {
             try
             {
