@@ -217,11 +217,13 @@ public class MoveManager : MonoBehaviour
         }
         if(!red)
         {
+            player.GetComponent<PlayerData>().closeSocket();
             Destroy(player);
             SceneManager.LoadScene("BlueVictory");
         }
         else if (!blue)
         {
+            player.GetComponent<PlayerData>().closeSocket();
             Destroy(player);
             SceneManager.LoadScene("RedVictory");
         }

@@ -9,6 +9,7 @@ public class PlayerData : MonoBehaviour
 {
     public PieceConfig.Color team;
     public string IP = null;
+    public int Port;
     private Socket oponentSocket;
 
     public bool startGame()
@@ -19,7 +20,7 @@ public class PlayerData : MonoBehaviour
         // running the application. 
         IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
         IPAddress ipAddr = ipHost.AddressList[0];
-        IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 11111);
+        IPEndPoint localEndPoint = new IPEndPoint(ipAddr, this.Port);
 
         // Creation TCP/IP Socket using  
         // Socket Class Costructor 
@@ -43,7 +44,9 @@ public class PlayerData : MonoBehaviour
             // incoming connection Using  
             // Accept() method the server  
             // will accept connection of client 
+            Debug.Log("entrando accept");
             oponentSocket = listener.Accept();
+            Debug.Log("saindo accept");
         }
         catch (System.Exception) { return false; }
         return true;
@@ -59,35 +62,38 @@ public class PlayerData : MonoBehaviour
             // computer. 
             IPHostEntry ipHost = Dns.GetHostEntry(this.IP);
             IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 11111);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddr, this.Port);
 
             // Creation TCP/IP Socket using  
             // Socket Class Costructor 
             oponentSocket = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
+            if (oponentSocket == null)
+                Debug.Log("oponent socket null");
             try
             {
                 // Connect Socket to the remote  
                 // endpoint using method Connect() 
-                oponentSocket.Connect(localEndPoint);
+                Debug.Log("entrando connect");
+                oponentSocket.Connect(ipAddr, this.Port);
+                Debug.Log("saindo connect");
             }
             // Manage of Socket's Exceptions 
             catch (ArgumentNullException ane)
             {
-                Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                Debug.Log(ane);
             }
             catch (SocketException se)
             {
-                Console.WriteLine("SocketException : {0}", se.ToString());
+                Debug.Log(se);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                Debug.Log(e);
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.ToString());
+            Debug.Log(e.ToString());
             return false;
         }
         return true;
@@ -103,5 +109,11 @@ public class PlayerData : MonoBehaviour
         byte[] bytes = new byte[2048];
         oponentSocket.Receive(bytes);
         return bytes;
+    }
+
+    public void closeSocket()
+    {
+        oponentSocket.Shutdown(SocketShutdown.Both);
+        oponentSocket.Close();
     }
 } 

@@ -15,11 +15,15 @@ public class Connector : MonoBehaviour
         {
             if(player_data.team == PieceConfig.Color.blue)
             {
+                Debug.Log("entrando thread azul");
                 connected = player_data.startGame();
+                Debug.Log("saindo thread azul");
             }
             else
             {
+                Debug.Log("entrando thread vermelha");
                 connected = player_data.enterGame();
+                Debug.Log("saindo thread vermelha");
             }
         }).Start();
     }

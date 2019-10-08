@@ -9,9 +9,12 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject brilhoAzul = null;
     [SerializeField] GameObject criarBut = null;
     [SerializeField] GameObject entrarBut = null;
+
     [SerializeField] GameObject brilhoVermelho = null;
     [SerializeField] GameObject entrarIP = null;
+    [SerializeField] GameObject entrarPort = null;
     [SerializeField] GameObject entrarIpBut = null;
+    [SerializeField] GameObject criarPortBut = null;
     [SerializeField] GameObject voltarBut = null;
 
     public void insertIPPainel()
@@ -22,7 +25,20 @@ public class SceneLoader : MonoBehaviour
 
         brilhoAzul.SetActive(true);
         entrarIP.SetActive(true);
+        entrarPort.SetActive(true);
         entrarIpBut.SetActive(true);
+        voltarBut.SetActive(true);
+    }
+
+    public void insertPortPainel()
+    {
+        brilhoAzul.SetActive(false);
+        criarBut.SetActive(false);
+        entrarBut.SetActive(false);
+
+        brilhoAzul.SetActive(true);
+        entrarPort.SetActive(true);
+        criarPortBut.SetActive(true);
         voltarBut.SetActive(true);
     }
 
@@ -34,7 +50,9 @@ public class SceneLoader : MonoBehaviour
 
         brilhoVermelho.SetActive(false);
         entrarIP.SetActive(false);
+        entrarPort.SetActive(false);
         entrarIpBut.SetActive(false);
+        criarPortBut.SetActive(false);
         voltarBut.SetActive(false);
     }
 
@@ -42,6 +60,7 @@ public class SceneLoader : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player Data");
         player.GetComponent<PlayerData>().team = PieceConfig.Color.blue;
+        player.GetComponent<PlayerData>().Port = int.Parse(entrarPort.GetComponent<InputField>().text);
         DontDestroyOnLoad(player);
 
         SceneManager.LoadScene("WaitingScene");
@@ -52,6 +71,7 @@ public class SceneLoader : MonoBehaviour
         GameObject player = GameObject.Find("Player Data");
         player.GetComponent<PlayerData>().team = PieceConfig.Color.red;
         player.GetComponent<PlayerData>().IP = entrarIP.GetComponent<InputField>().text;
+        player.GetComponent<PlayerData>().Port = int.Parse(entrarPort.GetComponent<InputField>().text);
         DontDestroyOnLoad(player);
 
         SceneManager.LoadScene("WaitingScene");
