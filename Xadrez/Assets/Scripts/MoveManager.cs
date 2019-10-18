@@ -133,8 +133,8 @@ public class MoveManager : MonoBehaviour
             }
         }
 
-        if(player.GetComponent<PlayerData>().team == PieceConfig.Color.red)
-            waitForPlay(player.GetComponent<PlayerData>());
+        //if(player.GetComponent<PlayerData>().team == PieceConfig.Color.red)
+            //waitForPlay(player.GetComponent<PlayerData>());
     }
 
     // Update is called once per frame
@@ -144,11 +144,26 @@ public class MoveManager : MonoBehaviour
         {
             selected_piece = board[oponent_move.xpos1, oponent_move.ypos1];
             swapPiecePositionInt(new Vector3Int(oponent_move.xpos1, oponent_move.ypos1, 0), new Vector3Int(oponent_move.xpos2, oponent_move.ypos2, 0));
-            checkVictory();
+            checkVictory(true);
             selected_piece.transform.position = move_grid.GetCellCenterWorld(new Vector3Int(oponent_move.xpos2, oponent_move.ypos2, 0));
             selected_piece = null;
             oponent_move = null;
             changeTurn();
+        }
+        else
+        {
+            //waitForPlay(player.GetComponent<PlayerData>());
+            byte[] buffer = null;
+            buffer = player.GetComponent<PlayerData>().receiveBytes();
+            if(buffer != null)
+            {
+                oponent_move = (Movement)ByteArrayToObject(buffer);
+                Debug.Log(oponent_move.xpos1);
+                Debug.Log(oponent_move.ypos1);
+                Debug.Log(oponent_move.xpos2);
+                Debug.Log(oponent_move.ypos2);
+            }
+
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -160,9 +175,12 @@ public class MoveManager : MonoBehaviour
             {
                 if(player_turn == player.GetComponent<PlayerData>().team)
                 {
-                    selected_piece = board[cell_clicked.x, cell_clicked.y];
-                    possible_moves = selected_piece.GetComponent<PieceConfig>().getMovesAvailable(cell_clicked, board);
-                    createCellHighlight(cell_clicked);
+                    if(board[cell_clicked.x, cell_clicked.y].GetComponent<PieceConfig>().piece_color == player.GetComponent<PlayerData>().team)
+                    {
+                        selected_piece = board[cell_clicked.x, cell_clicked.y];
+                        possible_moves = selected_piece.GetComponent<PieceConfig>().getMovesAvailable(cell_clicked, board);
+                        createCellHighlight(cell_clicked);
+                    }
                 }
             }
             else
@@ -187,21 +205,20 @@ public class MoveManager : MonoBehaviour
                     {
                         player.GetComponent<PlayerData>().sendBytes(ObjectToByteArray(new Movement(move_grid.WorldToCell(selected_piece.transform.position), cell_clicked)));
                         swapPiecePosition(selected_piece.transform.position, mousePos);
-                        checkVictory();
+                        checkVictory(false);
                         selected_piece.transform.position = move_grid.GetCellCenterWorld(cell_clicked);
                         if (selected_piece.GetComponent<PawnMove>() != null)
                             selected_piece.GetComponent<PawnMove>().useFirstMove();
                         selected_piece = null;
                         destroyCellHighlight();
                         changeTurn();
-                        waitForPlay(player.GetComponent<PlayerData>());
                     }
                 }
             }
         }
     }
 
-    private void checkVictory()
+    private void checkVictory(bool disconnect)
     {
         bool red = false;
         bool blue = false;
@@ -217,14 +234,20 @@ public class MoveManager : MonoBehaviour
         }
         if(!red)
         {
-            player.GetComponent<PlayerData>().closeSocket();
-            Destroy(player);
+            if(disconnect)
+            {
+                player.GetComponent<PlayerData>().closeSocket();
+                Destroy(player);
+            }
             SceneManager.LoadScene("BlueVictory");
         }
         else if (!blue)
         {
-            player.GetComponent<PlayerData>().closeSocket();
-            Destroy(player);
+            if(disconnect)
+            {
+                player.GetComponent<PlayerData>().closeSocket();
+                Destroy(player);
+            }
             SceneManager.LoadScene("RedVictory");
         }
     }
@@ -247,10 +270,10 @@ public class MoveManager : MonoBehaviour
 
     private void waitForPlay(PlayerData player_data)
     {
-        new Thread(() =>
-        {
-            oponent_move = (Movement)ByteArrayToObject(player_data.receiveBytes());
-        }).Start();
+        //new Thread(() =>
+        //{
+        //oponent_move = (Movement)ByteArrayToObject(player_data.receiveBytes());
+        //}).Start();
     }
 
     private void changeTurn()
